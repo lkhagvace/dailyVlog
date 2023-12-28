@@ -1,22 +1,46 @@
-import React from "react";
+import { data } from "autoprefixer";
+import React, { useEffect, useState } from "react";
 
 export const Firstsection = () => {
+  const [firstnewsvlogs, setFirstnewsvlogs] = useState([]);
+  useEffect(() => {
+    fetch("https://dev.to/api/articles")
+      .then((response) => response.json())
+      .then((data) => setFirstnewsvlogs(data));
+  });
   return (
-    <div className="flex w-11/12 m-auto my-8 flex-col">
-      <p className="text-xl font-bold">Trending</p>
-      <img src="/firstImg.png" alt="" className="my-8" />
-      <div className="w-4/5 m-auto relative my-8">
-        <img className="rounded-xl" src="/firstImg.png" alt="" />
-        <div className="absolute flex flex-col bottom-8 w-11/12 pl-8">
-          <div className="w-24 bg-blue-500 rounded-lg text-white h-8 align-center">
-            Trending
-          </div>
-          <p className="text-white font-bold text-xl mt-4">
-            The Impact of Technology on the Workplace: How Technology is
-            Changing
-          </p>
+    <>
+      <p className="text-xl font-bold mb-12">Trending</p>
+      <div className="hidden xl:flex">
+        <div className="flex h-96 m-auto my-8">
+          <img src="/firstImg.png" alt="" className="my-8 flex xl:hidden" />
         </div>
+        {firstnewsvlogs.map((firstnewsvlog, index) => {
+          if (index < 4) {
+            return (
+              <a className="relative mr-8" href={`/${firstnewsvlog.id}`}>
+                <img
+                  className="min-w-1/4 h-80 rounded-xl"
+                  src={
+                    firstnewsvlog.cover_image
+                      ? firstnewsvlog.cover_image
+                      : "https://picsum.photos/536/354"
+                  }
+                  alt=""
+                />
+                <div className="absolute left-4 bottom-36">
+                  <p className="w-28 h-8 bg-purple-200 flex justify-center text-white font-bold rounded-lg py-1 text-blue-500">
+                    Technology
+                  </p>
+                  <p className="text-xl font-bold text-3xl text-white">
+                    {firstnewsvlog.title}
+                  </p>
+                </div>
+              </a>
+            );
+          }
+        })}
       </div>
-    </div>
+    </>
   );
 };
