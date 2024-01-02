@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Logo } from "./sgvs/Logo";
 import { Search } from "./sgvs/Search";
+import Link from "next/link";
 
 export const Header = () => {
   const array = [
@@ -40,12 +41,31 @@ export const Header = () => {
       }
     }
   };
+  // const [toggle, setToggle] = useState(false);
+  // const [isVisible, setIsVisible] = useState(false);
+  // isVisible = () => {};
+  // function onBurger() {
+  //   setToggle(!toggle);
+  // }
+  // function notBurger() {
+  //   setToggle(!toggle);
+  // }
+  // useEffect(() => {
+  //   if (toggle === false) {
+  //     setIsVisible(false);
+  //   }
+  //   if (toggle === true) {
+  //     setIsVisible(true);
+  //   }
+  // }, [toggle]);
   return (
     <div className="flex w-11/12 m-auto justify-between my-8 xl:w-full xl:m-0 xl:my-8">
-      <Logo />
+      <a href="/">
+        <Logo />
+      </a>
       <nav className="hidden xl:flex justify-between w-3/5 mr-0">
         <div className="hidden xl:flex gap-8 text-gray-500">
-          <a href="/index">
+          <a href="/">
             <p>Home</p>
           </a>
           <a href="/bloglist">
@@ -72,7 +92,7 @@ export const Header = () => {
               id="home"
               className="hidden absolute top-8 bg-black text-white w-32 h-8 rounded-xl justify-center m-auto pt-1"
             >
-              <a href="/">Home</a>
+              <Link href={"/"}>Home</Link>
             </div>
             <div
               id="blog"
@@ -111,7 +131,22 @@ export const Header = () => {
           </div>
         </div>
       </nav>
-      <div className="flex flex-col gap-1 xl:hidden">
+      <div
+        id="clickedBurger"
+        className=" hidden flex-row bg-black text-white xl:hidden"
+      >
+        <a href="/">
+          <p>Home</p>
+        </a>
+        <a href="/bloglist">
+          <p>Blog</p>
+        </a>
+        <a href="/contact">
+          <p>Contact</p>
+        </a>
+        <p>Cancel</p>
+      </div>
+      <div id="burger" className="flex flex-col gap-1 xl:hidden">
         <div className="w-8 h-1 bg-black"></div>
         <div className="w-8 h-1 bg-black"></div>
         <div className="w-8 h-1 bg-black"></div>

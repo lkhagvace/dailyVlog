@@ -8,6 +8,7 @@ export default function Contact() {
   const state = [];
 
   let memory = () => {
+    alert("Thanks for your feedback.");
     const info = [
       {
         ner: `${document.getElementById("nameValue").value}`,
@@ -17,6 +18,7 @@ export default function Contact() {
       },
     ];
     state.push(info);
+    console.log(state);
     document.getElementById("nameValue").value = "";
     document.getElementById("mail").value = "";
     document.getElementById("subject").value = "";
@@ -39,19 +41,25 @@ export default function Contact() {
           </p>
           <div className="flex justify-between flex-col gap-4 xl:gap-0 xl:flex-row">
             <div className="flex justify-center border-2 border-gray border-solid xl:w-2/5 xl:flex-row">
-              <div className="flex flex-col justify-center py-4 xl:px-4 gap-4">
+              <a
+                className="flex flex-col justify-center py-4 xl:px-4 gap-4"
+                href="https://www.google.com/maps/search/1328+Oak+Ridge+Drive,+Saint+Louis,+Missouri/@38.5297831,-90.4583516,13.8z?entry=ttu"
+              >
                 <p className="text-2xl font-bold">Address</p>
                 <p className="text-gray-400">
                   1328 Oak Ridge Drive, Saint Louis, Missouri
                 </p>
-              </div>
+              </a>
             </div>
-            <div className="flex border-2 border-gray rounded-lg border-solid xl:w-2/5">
+            <a
+              className="flex border-2 border-gray rounded-lg border-solid xl:w-2/5"
+              href="https://mail.google.com/mail/u/0/#inbox?compose=CllgCJZfSkcXmRxJdXKPwVXwbKjVJmlrtZFhxBSchrmsrgDKkhkPflzJXqgpzrrlhFxsHmDWSNV"
+            >
               <div className="flex flex-col justify-center px-10 py-4 xl:px-4 gap-4">
                 <p className="text-2xl font-bold">Contact</p>
                 <p className="text-gray-400">313-332-8662 info@email.com</p>
               </div>
-            </div>
+            </a>
           </div>
           <div className="flex justify-center bg-gray-100 rounded-lg">
             <div className="flex flex-col gap-8 py-16">

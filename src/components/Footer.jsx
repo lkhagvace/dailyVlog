@@ -48,7 +48,7 @@ export const Footer = () => {
         </div>
       </div>
       <div className="flex justify-between">
-        <div className="flex ml-8 xl:ml-0">
+        <a href="/" className="flex ml-8 xl:ml-0">
           <B />
           <div className="ml-2 flex flex-col">
             <p className="text-xl">
@@ -56,7 +56,7 @@ export const Footer = () => {
             </p>
             <p className="text-gray-400">© All Rights Reserved.</p>
           </div>
-        </div>
+        </a>
         <div className="hidden xl:flex gap-4 text-gray-600">
           <p className="w-32">Terms Of Use</p>
           <p className="w-32">Privacy Policy</p>
