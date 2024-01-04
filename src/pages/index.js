@@ -7,12 +7,14 @@ import { Hero } from "@/components/Hero";
 import { Footer } from "@/components/Footer";
 import { Main } from "next/document";
 import Head from "next/head";
+import { B } from "@/components/sgvs/B";
 
 export default function Index() {
   return (
     <>
       <Head>
-        <title>Hi</title>
+        <title>Personal Vlog</title>
+        <link rel="shortcut icon" href={`${(<B />)}`} />
       </Head>
       <main className="xl:flex flex-col w-4/5 m-auto">
         <Header />

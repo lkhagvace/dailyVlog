@@ -24,7 +24,7 @@ const Detail = () => {
 
   return (
     <>
-      <header className="flex justify-center m-auto xl:w-4/5">
+      <header className="flex m-auto xl:w-4/5">
         <Header />
       </header>
       <main className="flex justify-center m-auto my-8 xl:w-4/5">

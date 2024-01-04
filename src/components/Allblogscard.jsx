@@ -1,5 +1,6 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { SearchContextValue } from "@/context/SearchContext";
 import Router from "next/router";
 export const Allblogscard = () => {
   const [articles, setArticles] = useState([]);
@@ -8,9 +9,13 @@ export const Allblogscard = () => {
       .then((response) => response.json())
       .then((data) => setArticles(data));
   }, []);
+  const { searchValue, setSearchValue } = useContext(SearchContextValue);
+  const searchArticles = articles.filter((article) =>
+    article.title.toLowerCase().includes(searchValue.toLowerCase())
+  );
   return (
     <div className="flex justify-center flex-col xl:flex-row xl:flex-wrap">
-      {articles.map((article, index) => {
+      {searchArticles.map((article, index) => {
         return (
           <a
             className="flex w-11/12 m-auto flex-col gap-4 justify-between rounded-lg my-4 xl:w-1/4 xl:flex-wrap xl:mx-8"
@@ -43,6 +48,7 @@ export const Allblogscard = () => {
           </a>
         );
       })}
+      {searchArticles == 0 && <h1>Not Found</h1>}
     </div>
   );
 };

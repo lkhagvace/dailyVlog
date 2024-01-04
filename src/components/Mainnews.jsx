@@ -25,11 +25,11 @@ export const Mainnews = () => {
   };
   var article = articles[index];
   return (
-    <div className="hidden xl:flex">
+    <div className="hidden xl:flex mb-32">
       {article && (
         <div className="m-auto flex flex-col">
           <a href={`/${article.id}`}>
-            <div className="relative">
+            <div className=" flex relative">
               <img
                 className="rounded-xl w-[1475px] h-[700px]"
                 src={
@@ -38,7 +38,7 @@ export const Mainnews = () => {
                     : "https://picsum.photos/536/354"
                 }
               />
-              <div className="flex w-2/5 h-1/3 absolute justify-center left-8 bottom-16">
+              <div className="flex w-2/5 h-1/3 absolute justify-center left-8 bottom-36">
                 <div className="flex flex-col bg-white rounded-xl m-auto py-12 px-12">
                   <p className="bg-blue-600 text-white w-32 flex justify-center rounded-lg">
                     Technology
@@ -52,7 +52,7 @@ export const Mainnews = () => {
             </div>
           </a>
 
-          <div className="flex gap-4 ml-[1200px]">
+          <div className="flex gap-4 mt-8 justify-end">
             <div
               onClick={leftClick}
               className="border-2 border-solid border-black rounded-xl"

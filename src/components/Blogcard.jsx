@@ -1,6 +1,8 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import Router from "next/router";
+import { useContext } from "react";
+import { SearchContextValue } from "@/context/SearchContext";
 export const Blogcard = () => {
   const [articles, setArticles] = useState([]);
   useEffect(() => {
@@ -8,13 +10,17 @@ export const Blogcard = () => {
       .then((response) => response.json())
       .then((data) => setArticles(data));
   }, []);
+  const { searchValue, setSearchValue } = useContext(SearchContextValue);
+  const searchArticles = articles.filter((article) =>
+    article.title.toLowerCase().includes(searchValue.toLowerCase())
+  );
   return (
     <div className="flex justify-center flex-col xl:flex-row xl:flex-wrap">
-      {articles.map((article, index) => {
+      {searchArticles.map((article, index) => {
         if (index < 9) {
           return (
             <a
-              className="flex min-w-80 flex-col justify-between rounded-lg my-4 xl:min-w-1/4 xl:flex-wrap xl:ml-0"
+              className="flex w-11/12 m-auto flex-col gap-4 justify-between rounded-lg my-4 xl:w-1/4 xl:flex-wrap xl:mx-8"
               href={`/${article.id}`}
             >
               <div className="my-8 flex flex-col gap-4 xl:ml-8">
